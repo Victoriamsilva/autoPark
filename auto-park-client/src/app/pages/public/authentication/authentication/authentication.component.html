@@ -1,0 +1,21 @@
+<app-authentication-layout
+  [subtitle]="'Preencha suas credênciais para fazer login'"
+>
+  <form [formGroup]="form">
+    <fieldset>
+      <label class="label">E-mail</label>
+      <input formControlName="email" class="input" />
+      <span></span>
+    </fieldset>
+
+    <fieldset>
+      <label class="label">Senha</label>
+      <input formControlName="password" class="input" />
+      <span *ngIf="password.touched && password.hasError('required')"
+        >Deu ruim</span
+      >
+    </fieldset>
+  </form>
+
+  <button (click)="login()" class="primary-button mt-4">Entrar</button>
+</app-authentication-layout>
