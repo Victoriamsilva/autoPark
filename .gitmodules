@@ -4,3 +4,12 @@
 [submodule "auto-park-client"]
 	path = auto-park-client
 	url = https://github.com/Victoriamsilva/auto-park-client
+[submodule "auth-api"]
+	path = auth-api
+	url = https://github.com/Victoriamsilva/auth-api
+[submodule "auto-park-api"]
+	path = auto-park-api
+	url = https://github.com/Victoriamsilva/auto-park-api
+[submodule "history-api"]
+	path = history-api
+	url = https://github.com/Victoriamsilva/history-api
