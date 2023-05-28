@@ -1,7 +1,25 @@
-.input {
-    @apply h-8 w-full rounded-md border border-gray-light outline-none p-2 mb-2
-}
+fieldset {
+  @apply mb-2;
 
-.label {
-    @apply text-xs text-gray
+  input {
+    @apply h-10 w-full rounded-lg border border-gray outline-none p-2 focus:border-primary;
+  }
+
+  label {
+    @apply text-xs text-gray;
+  }
+
+  span {
+    @apply text-red text-xs;
+  }
+
+  &.hasError {
+    input {
+      @apply border-red;
+    }
+
+    label {
+      @apply text-red;
+    }
+  }
 }

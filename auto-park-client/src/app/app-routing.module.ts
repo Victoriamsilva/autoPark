@@ -1,18 +1,24 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { authenticationGuard } from './guards/authentication.guard';
 
 const routes: Routes = [
   {
-    path: 'entrance',
-    loadChildren: () =>
-      import('./pages/private/entrance/entrance.module').then(
-        (m) => m.EntranceModule
-      ),
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full',
   },
+
   {
-    path: 'exit',
-    loadChildren: () =>
-      import('./pages/private/exit/exit.module').then((m) => m.ExitModule),
+    path: '',
+    canActivate: [authenticationGuard],
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('./pages/private/home/home.module').then((m) => m.HomeModule),
+      },
+    ],
   },
   {
     path: 'authentication',

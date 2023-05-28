@@ -1,0 +1,3 @@
+[submodule "event-bridge"]
+	path = event-bridge
+	url = https://github.com/Victoriamsilva/event-bridge

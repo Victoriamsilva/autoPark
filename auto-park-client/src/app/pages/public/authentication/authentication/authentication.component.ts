@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-authentication',
@@ -17,17 +18,31 @@ export class AuthenticationComponent {
     return this.form.get('password') as FormControl;
   }
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthenticationService
+  ) {
     this.form = this.formBuilder.group({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [
+      email: new FormControl('victoria@gmail.com', [
         Validators.required,
-        Validators.minLength(6),
+        Validators.email,
+      ]),
+      password: new FormControl('12345', [
+        Validators.required,
+        Validators.minLength(5),
       ]),
     });
   }
 
-  login() {
-    console.log(this.form.value);
+  async login() {
+    if (!this.form.valid) {
+      this.form.markAllAsTouched();
+      return;
+    }
+    try {
+      await this.authService.login(this.email.value, this.password.value);
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
