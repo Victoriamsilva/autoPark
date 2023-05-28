@@ -1,3 +1,6 @@
 [submodule "event-bridge"]
 	path = event-bridge
 	url = https://github.com/Victoriamsilva/event-bridge
+[submodule "auto-park-client"]
+	path = auto-park-client
+	url = https://github.com/Victoriamsilva/auto-park-client
